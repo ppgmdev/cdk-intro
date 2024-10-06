@@ -3,6 +3,7 @@ import { Construct } from 'constructs';
 import { aws_dynamodb } from 'aws-cdk-lib';
 import { aws_lambda } from 'aws-cdk-lib';
 import { CfnOutput } from 'aws-cdk-lib';
+import { aws_iam } from 'aws-cdk-lib';
 
 export class CdkIntroStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -20,10 +21,15 @@ export class CdkIntroStack extends cdk.Stack {
       code: aws_lambda.Code.fromAsset("./lambda/lambda_bedrock"),
       handler: "index.handler",
       runtime: aws_lambda.Runtime.PYTHON_3_12,
+      timeout: cdk.Duration.seconds(30),
       environment: {
         "DDB_TABLE_NAME": ddb_table.tableName,
-      }
+      },
     });
+
+    // give permissions to lambda
+    ddb_table.grantWriteData(lambda_bedrock)
+    lambda_bedrock.role?.addManagedPolicy(aws_iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonBedrockFullAccess"))
 
     new CfnOutput(this, "LambdaARN", {
       value: lambda_bedrock.functionArn,

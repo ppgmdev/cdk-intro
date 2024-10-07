@@ -35,6 +35,11 @@ export class CdkIntroStack extends cdk.Stack {
       value: lambda_bedrock.functionArn,
       description: "ARN of lambda function",
     });
+
+    new CfnOutput(this, "LambdaName", {
+      value: lambda_bedrock.functionName,
+      description: "Name of lambda function",
+    });
     
     new CfnOutput(this, "DDBName", {
       value: ddb_table.tableName,
@@ -45,5 +50,5 @@ export class CdkIntroStack extends cdk.Stack {
       value: ddb_table.tableArn,
       description: "ARN of the DDB Table",
     });
-  }
-}
+  };
+};

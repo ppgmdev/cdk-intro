@@ -3,7 +3,7 @@
 # Check if a message was provided
 if [ $# -eq 0 ]; then
     echo "Please provide a message."
-    echo "Usage: sh lambdabedrock.sh \"your message here\""
+    echo "Usage: sh assistant.sh \"your message here\""
     exit 1
 fi
 
@@ -11,7 +11,7 @@ fi
 MESSAGE="$1"
 
 # Your Lambda function name
-FUNCTION_NAME="YOUR LAMBDA NAME"
+FUNCTION_NAME="CdkIntroStack-LambdaBedrock8CBD5FA3-Jcpb0FdZo5pQ"
 
 # Invoke the Lambda function
 aws lambda invoke \

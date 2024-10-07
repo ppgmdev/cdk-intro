@@ -11,7 +11,7 @@ fi
 MESSAGE="$1"
 
 # Your Lambda function name
-FUNCTION_NAME="CdkIntroStack-LambdaBedrock8CBD5FA3-FEe2s0IBSnvV"
+FUNCTION_NAME="YOUR LAMBDA NAME"
 
 # Invoke the Lambda function
 aws lambda invoke \

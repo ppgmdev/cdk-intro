@@ -1,6 +1,6 @@
 # CDK Intro!
 
-This project deploys a lambda function that talks to Bedrock Claude 3 Sonnet.
+This project deploys a lambda function that talks to Bedrock Claude 3 Sonnet and saves the output into a DynamoDB table.
 
 ```bash
 git clone https://github.com/ppgmdev/cdk-intro.git
